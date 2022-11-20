@@ -29,7 +29,8 @@ console.log(typeof apellidos);
 console.log(typeof booleano);
 console.log(typeof hijos);
 console.log(typeof zapatos);
-//Trusty Falsy
+
+//Truthy Falsy
 // Vacío
 if(""){
     console.log("String vacio Es verdadero")
@@ -38,45 +39,45 @@ if(""){
 }
 //String
 if("Daniela"){
-    console.log("String Es verdadero") //trusty
+    console.log("String Es verdadero") //truthy
 }else{
     console.log("String  Es falsy")
 }
 // Valor negativo
 if(-1){
-    console.log("-1 Es verdadero") //trusty
+    console.log("-1 Es verdadero") //truthy
 }else{
     console.log("-1 Es falsy")
 }
 // Cero
 if(0){
-    console.log("0 Es verdadero") //trusty
+    console.log("0 Es verdadero") //truthy
 }else{
     console.log("0 Es falsy")
 }
 // Valor positivo
 if(1){
-    console.log("1 Es verdadero") //trusty
+    console.log("1 Es verdadero") //truthy
 }else{
     console.log("1 Es falsy")
 }
 //Nulo
 if(null){
-    console.log("null Es verdadero") //trusty
+    console.log("null Es verdadero") //truthy
 }else{
     console.log("null Es falsy")
 }
 // Indefinido
 if(undefined){
-    console.log("undefined Es verdadero") //trusty
+    console.log("undefined Es verdadero") //truthy
 }else{
     console.log("undefined Es falsy")
 }
 
-//
-//
-//
-// 3) X -> "var"
+// Orden de Importancia
+// 1) "const"
+// 2) "let"
+// 3) X -> "var" == no se debe utilizar var
 
 
 // Javascript
