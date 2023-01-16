@@ -1,4 +1,4 @@
-Hola
+Hola :)  lo logramos!
 // 01-variables.js
 
 // mutables (re asignadas =) e inmutables
