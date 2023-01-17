@@ -68,21 +68,21 @@ function ejercicio08(path, contenidoNuevo){
 async function asyncAwaitUno(path, nuevoContenido){
     // Si sabemos que en la promesa puede existir un reject usamos try-catch
     try{
-        const respuestaContenidoArchivoOriginal = await leerArchivo(path);
+        const respuestaContenidoArchivoOriginal = await leerArchivo(path); // Espera que lea el archivo
         await escribirArchivo(path, respuestaContenidoArchivoOriginal + nuevoContenido);
-        1 + 1; //caramelo
+        1 + 1; //caramelo, como es una función asíncrona va a ir primero
         leerArchivo().then().catch()//async
         await leerArchivo() //sync
         // await escribirArchivo(path,(await leerArchivo(path)) + nuevoContenido);
     }catch (error){
         console.error(error)
     }
-
 }
 asyncAwaitUno('06-ejemplo.txt', ' :)  lo logramos!').then().catch()
-const asyncAwaitDos = function (){
+
+const asyncAwaitDos = async function (){
 
 }
-const asyncAwaitTres = () =>{
+const asyncAwaitTres = async () =>{
 
 }
