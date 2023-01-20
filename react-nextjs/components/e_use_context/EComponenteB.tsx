@@ -15,6 +15,7 @@ export default function (){
             }}>
                 Actualizar
             </button>
+            <br/>
             <EComponenteC></EComponenteC>
         </>
     )
