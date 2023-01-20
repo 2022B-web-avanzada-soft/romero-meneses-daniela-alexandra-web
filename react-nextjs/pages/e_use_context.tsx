@@ -5,8 +5,10 @@ import Layout from "../components/Layout";
 export default function (){
     return (
         <>
-            <h1>Use Context</h1>
-            <EContenedor></EContenedor>
+            <Layout title={"Use Context"}>
+                <h1>Use Context</h1>
+                <EContenedor></EContenedor>
+            </Layout>
         </>
     )
 }

@@ -1,6 +1,6 @@
 // hooks/useSelectMoneda.tsx
 
-import {MonedasInterface} from "../../interfaces/monedas";
+import {MonedasInterface} from "../../interfaces/moneda";
 import {useState} from "react";
 import {JSXElement} from "@babel/types";
 
