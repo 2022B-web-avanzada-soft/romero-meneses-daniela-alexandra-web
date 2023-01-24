@@ -2,11 +2,13 @@ import {useEffect, useState} from "react";
 import {MONEDAS} from "../d_hook_custom/monedas";
 import {MonedasInterface} from "../../interfaces/moneda";
 import useSelectMoneda from "../hooks/useSelectMoneda";
+import {ConsultaMoneda} from "../../pages/f_ejemplo_criptomonedas";
 
-export default function ({setMonedas}) {
+export default function (params) {
+    const {setMonedas} = params;
     const [monedasArreglo, setMonedasArreglo] = useState(MONEDAS);
     const [criptoMonedasArreglo, setCriptoMonedasArreglo] = useState([] as MonedasInterface[]);
-    const [valorMonedas, SelectMonedaComponente] = useSelectMoneda(
+    const [valorMoneda, SelectMonedaComponente] = useSelectMoneda(
         'Seleccionar Moneda',
         monedasArreglo
     );
@@ -14,6 +16,7 @@ export default function ({setMonedas}) {
         'Seleccionar Criptomoneda',
         criptoMonedasArreglo
     );
+
     useEffect(
         () => {
             const consultarAPICripto = async () => {
@@ -36,12 +39,16 @@ export default function ({setMonedas}) {
             });
         },
         []
-    );
+    )
     const manejarSubmitFormulario = (e)=>{
         e.preventDefault();
+        const monedasConsulta: ConsultaMoneda = {
+            valorCriptoMoneda: valorCriptoMoneda as string,
+            valorMoneda: valorMoneda as string
+        }
+        setMonedas(monedasConsulta);
     }
-
-    return(
+    return (
         <>
             <form onSubmit={manejarSubmitFormulario}>
                 {SelectMonedaComponente}
@@ -53,6 +60,4 @@ export default function ({setMonedas}) {
             </form>
         </>
     )
-
 }
-

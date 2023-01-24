@@ -1,0 +1,1 @@
+[{"nombreGenero":"Epico","cantidadDeLibros":1200,"subgenero":"Aventura","principalAutor":"Homero","libros":[]}]

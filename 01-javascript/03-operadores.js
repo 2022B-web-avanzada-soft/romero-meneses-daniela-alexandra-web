@@ -76,7 +76,7 @@ const respuestaIndex = arreglo
             return valorActual.nombre === "Cristian";
         }
     );
-//console.log('respuestaIndex', respuestaIndex); // Indice -> 6
+console.log('respuestaIndex', respuestaIndex); // Indice -> 6
 
 // FOR EACH
 // Itera el arreglo y no devuelve nada
