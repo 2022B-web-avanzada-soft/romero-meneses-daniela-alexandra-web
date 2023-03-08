@@ -1,1 +1,1 @@
-[{"nombre":"Epico","autorRepresentativo":"Homero","esPopular":true,"precioEstimado":19.6,"numeroDeAutores":15620,"libros":[{"nombre":"La Odisea","autor":"Homero","numeroPaginas":1850,"fechaDePublicacion":"1960-05-05T05:00:00.000Z","estaEnLibrerias":false}]}]
+[{"nombre":"Epico","autorRepresentativo":"Homero","esPopular":false,"precioEstimado":19.6,"numeroDeAutores":15620,"libros":[]}]

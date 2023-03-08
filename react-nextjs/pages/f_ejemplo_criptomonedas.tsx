@@ -1,14 +1,30 @@
 import Layout from "../components/Layout";
 import CryptoFormulario from "../components/f_ejemplo_criptomoneda/CryptoFormulario";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
-export interface ConsultaMoneda{
+export interface ConsultarMoneda{
     valorMoneda: string;
     valorCriptoMoneda: string;
 }
 
 export default function (){
-    const [monedas, setMonedas] = useState({} as any)
+    const [monedas, setMonedas] = useState({} as ConsultarMoneda)
+    const [resultado, setResultado] = useState({} as any);
+    useEffect(
+        ()=>{
+            if(Object.keys(monedas).length === 2){
+                const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=
+                ${monedas.valorCriptoMoneda}&tsyms=${monedas.valorMoneda}`
+                const consultarCripto = async ()=>{
+                    const respuesta = await fetch(url);
+                    const resultado = await respuesta.json();
+                    setResultado(resultado.DISPLAY[monedas.valorCriptoMoneda][monedas.valorMoneda])
+                }
+                consultarCripto();
+            }
+        },
+        [monedas]
+    )
     return(
         <>
             <Layout title="Ejemplo Criptomonedas | EPN">
@@ -27,7 +43,21 @@ export default function (){
                         </CryptoFormulario>
                     </div>
                     <div className="col-sm-6">
-
+                        {
+                            resultado.PRICE &&
+                            <div>
+                                <p><strong>PRECIO:</strong>
+                                    {resultado.PRICE}</p>
+                                <p><strong>Precio mas alto del dia:</strong>
+                                    {resultado.HIGHDAY}</p>
+                                <p><strong>Precio mas bajo del dia:</strong>
+                                    {resultado.LOWDAY}</p>
+                                <p><strong>Variacion ultimas 24 horas:</strong>
+                                    {resultado.CHANGEPCT24HOUR}</p>
+                                <p><strong>Ultima Actualizacion:</strong>
+                                    {resultado.LASTUPDATE}</p>
+                            </div>
+                        }
                     </div>
                 </div>
             </Layout>
