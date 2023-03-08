@@ -1,0 +1,41 @@
+//i_todos
+// index.tsx
+
+import Layout from "../../components/Layout";
+import {Todo, TodoHttp} from "../../servicios/http/todo.http";
+import {useEffect, useState} from "react";
+
+export default function (){
+    const [arregloTodos, setArregloTodos] = useState(
+        [] as Todo[])
+    useEffect( // Iniciar el componente
+        () => {
+            // consulta API ...
+            consultarTodos();
+        },
+        []
+    )
+    const consultarTodos = async () => {
+        const resultado = await TodoHttp();
+        setArregloTodos([
+            ...arregloTodos,
+            ...resultado]);
+    }
+    return (
+        <>
+            <Layout title={"To do's"}>
+                <h1>To do's</h1>
+                {arregloTodos.map(
+                    (todo) => {
+                        return (<li key={todo.id}>
+                            {todo.id} - {todo.completed} -
+                            <a href={'/i_todos/' + todo.id}>
+                                {todo.title}
+                            </a>
+                        </li>)
+                    }
+                )}
+            </Layout>
+        </>
+    )
+}
