@@ -13,12 +13,6 @@ export interface FormularioModelo {
     mensaje: string;
 }
 export type MensajeSala = FormularioModelo;
-export type MensajeSala2 = {
-    salaId: string;
-    nombre: string;
-    mensaje: string;
-};
-
 
 export default function () {
     const [isConnected, setIsConnected] = useState(socket.connected)
@@ -54,6 +48,7 @@ export default function () {
                 setMensajes((mensajesAnteriores) => [...mensajesAnteriores, nuevoMensaje]);
             });
             socket.on('escucharEventoUnirseSala', (data: { mensaje: string }) => {
+                console.log("escucharEventoUnirseSala");
                 const nuevoMensaje: MensajeChatProps = {
                     mensaje: data.mensaje,
                     nombre: 'Sistema',
