@@ -1,16 +1,29 @@
-import {BadRequestException, Body, Controller, Delete, Get, HttpCode, Param, Post, Put, Query} from "@nestjs/common";
+import {
+    BadRequestException,
+    Body,
+    Controller,
+    Delete,
+    Get,
+    HttpCode,
+    Param, Post, Put, Query,
+    UnauthorizedException
+} from "@nestjs/common";
 import {UsuarioService} from "./usuario.service";
+import {UsuarioCreateDto} from "./dto/usuario-create.dto";
 import {UsuarioUpdateDto} from "./dto/usuario-update.dto";
 import {validate} from "class-validator";
-import {UsuarioEntity} from "./usuario.enity";
 import {FindManyOptions, FindOptionsWhere, Like} from "typeorm";
-import {UsuarioCreateDto} from "./dto/usuario-create.dto";
-
+import {UsuarioEntity} from "./usuario.entity";
 @Controller('usuario')
+// http://localhost:3000/usuario/
+// @Controller('usuario/asd/qwe')
+// http://localhost:3000/usuario/asd/qwe
 export class UsuarioController{
     constructor(
         private readonly usuarioService: UsuarioService
-){}
+    ) {
+    }
+
     @Get("/:id") // GET /usuario/1
     @HttpCode(200)
     findOneById(
@@ -19,6 +32,7 @@ export class UsuarioController{
     ) {
         return this.usuarioService.findOneById(+params.id); // +"1" = 1
     }
+
     @Delete("/:id") // DELETE /usuario/:id
     @HttpCode(200)
     delete(
@@ -52,6 +66,17 @@ export class UsuarioController{
             +params.id
         );
     }
+
+
+
+
+
+
+
+
+
+
+
     @Post("/") // POST /usuario
     @HttpCode(201)
     async create(
@@ -106,4 +131,25 @@ export class UsuarioController{
         return this.usuarioService.find(consulta);
 
     }
+
+
+
+
+
+
+
+
+
+
+
+    // 1 Informativo
+    // 2 OK
+    // 3 Redireccion
+    // 4 Error cliente
+    // 5 Error servidor
+    // parametros:
+    // 1 QueryParams ?id=1&consulta=Adrian
+    // 2 BodyParams (viajan en el formulario)
+    // 3 Parametros de ruta /usuario/:id/notas
+
 }

@@ -1,6 +1,6 @@
-import {IsNotEmpty, IsString} from "class-validator";
+import {IsIn, IsNotEmpty, IsString} from "class-validator";
 
-export class UsuarioCreateDto{
+export class UsuarioCreateDto {
     @IsNotEmpty()
     @IsString()
     nombres: string;
@@ -10,6 +10,6 @@ export class UsuarioCreateDto{
     apellidos: string;
 
     @IsNotEmpty()
-    @IsString()
+    @IsIn(['U', 'A'])
     rol: string;
 }
